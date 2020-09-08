@@ -49,10 +49,12 @@
 
    > 예시: S03P21D137-3 | 수요일 회의록 최종정리
 
-2. merge 규칙 
+2. git
+
+   - `master` - `develop` - `AI, Frontend, Backend` - `feature1, feature2, feature3, ...`
 
    - feature 브랜치 정의 : `feature/{본인 이름 이니셜}/{기능}`
-   
+
      > 예시: feature/khh/AI
 
 
