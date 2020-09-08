@@ -9,5 +9,6 @@
 
 - 김호한
   - 구글 스피치 사용법: https://webnautes.tistory.com/1247
-
 - 조대흠
+  - 텍스트 -> 이미지 변환 공부중
+  - Ref : https://github.com/paarthneekhara/text-to-image
