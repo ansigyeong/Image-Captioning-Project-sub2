@@ -51,7 +51,9 @@
 
 2. merge 규칙 
 
-   feature 브랜치 정의 : feature/khh(자기이름 이니셜)/AI(내용)
+   - feature 브랜치 정의 : `feature/{본인 이름 이니셜}/{기능}`
+   
+     > 예시: feature/khh/AI
 
 
 
@@ -68,7 +70,7 @@
 
      > DB 및 백엔드를 구현을 위한 ERD
 
-     ![](ERD.png)
+     
 
    - 목업
 
