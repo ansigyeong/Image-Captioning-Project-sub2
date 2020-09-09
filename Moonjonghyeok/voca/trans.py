@@ -12,6 +12,7 @@ def replaceToJson(text):
     else:
         text = text.replace("\n", "\\n")
         text = text.replace('"', '\\"')
+        text = text.replace('|', ', ')
         return text
 
 jsonFile = codecs.open('voca_test.json', 'w', 'utf-8')
