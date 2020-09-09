@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 
     'accounts',
+    'community',
 ]
 
 SITE_ID = 1
