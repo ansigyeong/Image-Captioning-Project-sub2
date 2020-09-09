@@ -12,3 +12,8 @@
 - 조대흠
   - 텍스트 -> 이미지 변환 공부중
   - Ref : https://github.com/paarthneekhara/text-to-image
+
+# 2020.09.09
+
+- 김호한
+  - Text to Image 모델 공부중 (train.py || pre_trained된 모델 사용이 안됨)
