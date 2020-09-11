@@ -38,4 +38,13 @@
 # 2020.09.11
 
 - 김호한
+  
   - GPU서버 train 파일 다운로드
+  
+- 조대흠
+
+  - AI 멘토링 
+
+  - 이미지 캡셔닝(https://codalab.org/competitions/3221/ 
+
+    https://paperswithcode.com/task/image-captioning)
