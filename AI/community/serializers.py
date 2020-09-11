@@ -17,6 +17,13 @@ class NoticeSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'user', 'created_at',)
 
 
+class CommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer(required=False)
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
 class SuggestionListSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
@@ -32,8 +39,3 @@ class SuggestionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CommentSerializer(serializers.ModelSerializer):
-    user = UserSerializer(required=False)
-    class Meta:
-        model = Comment
-        fields = '__all__'
