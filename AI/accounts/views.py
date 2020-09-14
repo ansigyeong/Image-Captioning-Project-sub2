@@ -13,19 +13,8 @@ def point_reward(request):
 
     serializer = PointSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(user=request.user)
+        serializer.save(user=user)
         return Response(serializer.data)
-
-
-@api_view(['POST'])
-def point_use(request, user_pk):
-    user = get_object_or_404(User, pk=user_pk)
-
-    serializer = PointSerializer(request)
-    if serializer.is_valid():
-        serializer.save(user=request.user)
-        return Response(serializer.data)
-
 
 @api_view(['GET'])
 def point_list(request, user_pk):
@@ -36,7 +25,10 @@ def point_list(request, user_pk):
     # 해당 유저의 전체 포인트를 리스트로 정리
     user_point_list = []
     for point in points:
-        user_point_list.append(point.value)
+        if point.use_type == True:
+            user_point_list.append(point.value)
+        else:
+            user_point_list.append(-point.value)
     
     # 합계를 구하여 user 모델의 db에 저장
     user_points = sum(user_point_list)
