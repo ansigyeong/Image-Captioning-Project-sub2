@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 class PointSerializer(serializers.ModelSerializer):
     class Meta:
         model = Point
-        field = '__all__'
+        fields = '__all__'
 
 class PointListSerializer(serializers.ModelSerializer):
     user = UserSerializer()

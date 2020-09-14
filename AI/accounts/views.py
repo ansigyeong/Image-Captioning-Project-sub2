@@ -5,10 +5,13 @@ from rest_framework.response import Response
 from .models import Point, User
 
 @api_view(['POST'])
-def point_reward(request, user_pk):
+def point_reward(request):
+
+    user_pk = request.data['user']
+
     user = get_object_or_404(User, pk=user_pk)
 
-    serializer = PointSerializer(request)
+    serializer = PointSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=request.user)
         return Response(serializer.data)
@@ -29,5 +32,15 @@ def point_list(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
 
     points = Point.objects.filter(user=user)
+    user_point_list = []
+    for point in points:
+        user_point_list.append(point.value)
+    user_points = sum(user_point_list)
+    user.total_point = user_points
+    user.save()
     serializer = PointListSerializer(points, many=True)
-    return Response(serializer.data)
+    data = {
+        "total_points": user_points,
+        "point_list": serializer.data
+    }
+    return Response(data)
