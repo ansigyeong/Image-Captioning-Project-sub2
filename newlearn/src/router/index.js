@@ -6,6 +6,8 @@ import SignupView from '../views/accounts/SignupView.vue'
 import LoginView from '../views/accounts/LoginView.vue'
 import LogoutView from '../views/accounts/LogoutView.vue'
 
+import PointList from '../views/PointList.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,6 +31,11 @@ const routes = [
     name: 'Logout',
     component: LogoutView,
   },
+  {
+    path: '/mypage/pointList',
+    name: 'Pointlist',
+    component: PointList,
+  }
 ]
 
 const router = new VueRouter({
@@ -38,7 +45,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['Login', 'Signup', 'Home', 'List']  // Login 안해도 됨
+  const publicPages = ['Login', 'Signup', 'Home', 'List', 'Pointlist']  // Login 안해도 됨
   const authPages = ['Login', 'Signup']  // Login 되어있으면 안됨
   
   const authRequired = !publicPages.includes(to.name)  // 로그인 해야 함

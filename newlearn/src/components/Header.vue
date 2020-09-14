@@ -31,7 +31,7 @@
                                     <v-list-item-title>내 정보 수정</v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
-                            <v-list-item style="margin-left:20px;">
+                            <v-list-item link @click="goPointList" style="margin-left:20px;">
                                 <v-list-item-content>
                                     <v-list-item-title>포인트 조회</v-list-item-title>
                                 </v-list-item-content>
@@ -94,6 +94,7 @@
 </template>
 
 <script>
+// import router from '../router';
 
 export default {
     data () {
@@ -102,6 +103,11 @@ export default {
         dropDrawer: null,
       }
     },
+    methods: {
+        goPointList() {
+            this.$router.push('/mypage/pointList')
+        }
+    }
 }
 </script>
 
