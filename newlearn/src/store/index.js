@@ -48,9 +48,9 @@ export default new Vuex.Store({
     },
     logout({ getters, commit }) {
       axios.post(SERVER.URL + SERVER.ROUTES.logout, null, getters.config)
-        .then(() => {  // Django DB 에서는 삭제 | cookie, state 에는 남아있음
-          commit('SET_TOKEN', null)  // state 에서도 삭제
-          cookies.remove('auth-token')  // cookie 에서는 삭제
+        .then(() => {  // Django DB에서 삭제 => cookie, state 에는 남아있음
+          commit('SET_TOKEN', null)  // state에서 삭제
+          cookies.remove('auth-token')  // cookie에서 삭제
           router.push({ name: 'Home' })
         })
         .catch(err => console.log(err.response.data))
