@@ -1,29 +1,24 @@
 <template>
   <div>
-    <Sign />
-    <!-- <div id="nav">
+    <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link :to="{ name: 'Login' }">Login</router-link>
       <router-link v-if="!isLoggedIn" :to="{ name: 'Login' }">Login</router-link> | 
       <router-link v-if="!isLoggedIn" :to="{ name: 'Signup' }">Signup</router-link>
       <router-link v-if="isLoggedIn" :to="{ name: 'Logout' }">Logout</router-link>
     </div>
-    <router-view /> -->
-    
+    <router-view />
   </div>
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
-import Sign from './components/Sign.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   computed: {
-    // ...mapGetters(['isLoggedIn'])
+    ...mapGetters(['isLoggedIn'])
   },
   componenets : [
-    Sign
   ],
   methods: {
   },
