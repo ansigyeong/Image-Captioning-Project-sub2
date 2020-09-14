@@ -11,6 +11,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    authToken: cookies.get('auth-token')
   },
   getters: {
     isLoggedIn: state => !!state.authToken,
