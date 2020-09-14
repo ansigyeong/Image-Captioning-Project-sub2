@@ -48,3 +48,13 @@
   - 이미지 캡셔닝(https://codalab.org/competitions/3221/ 
 
     https://paperswithcode.com/task/image-captioning)
+  
+  
+
+# 2020.09.14
+
+- 김호한
+
+  - GPU서버 image captioning 코드 수정 완료!
+
+- 조대흠
