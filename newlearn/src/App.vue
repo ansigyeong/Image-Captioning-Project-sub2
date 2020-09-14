@@ -8,7 +8,7 @@
   </v-app>
 </template>
 
-<script>
+<script scoped>
 import Header from './components/Header.vue';
 import Signin from './views/Signin.vue'
 
