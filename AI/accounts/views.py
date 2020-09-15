@@ -47,11 +47,21 @@ def point_list(request, user_pk):
     }
     return Response(data)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def daily(request, user_pk):
-    user = get_object_or_404(User, pk=user_pk)
+    
+    # myDict에 Querydict를 dictionary로 저장
+    myDict = {}
+    for key in request.data:
+        myDict[key] = request.data.getlist(key)
+    
+    # myDict의 key값을 list로 저장
+    key = list(myDict.keys())
+    
+    # 해당 key 값을 date filter로 사용
+    now = key[0]
 
-    now = timezone.localtime(timezone.now()).date()
+    user = get_object_or_404(User, pk=user_pk)
 
     attendance = DateCount.objects.filter(user=user).filter(date=now)
 
