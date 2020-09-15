@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-app>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link v-if="!isLoggedIn" :to="{ name: 'Login' }">Login</router-link> | 
@@ -7,7 +7,7 @@
       <router-link v-if="isLoggedIn" :to="{ name: 'Logout' }">Logout</router-link>
     </div>
     <router-view />
-  </div>
+  </v-app>
 </template>
 
 <script>
