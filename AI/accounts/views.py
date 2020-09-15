@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import PointSerializer, PointListSerializer
+from .serializers import PointSerializer, PointListSerializer, DailySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Point, User
+from .models import Point, User, DateCount
+from datetime import datetime
+from django.utils import timezone
 
 @api_view(['POST'])
 def point_reward(request):
@@ -44,3 +46,24 @@ def point_list(request, user_pk):
         "point_list": serializer.data
     }
     return Response(data)
+
+@api_view(['POST'])
+def daily(request, user_pk):
+    
+    # myDict에 Querydict를 dictionary로 저장
+    myDict = {}
+    for key in request.data:
+        myDict[key] = request.data.getlist(key)
+    
+    # myDict의 key값을 list로 저장
+    key = list(myDict.keys())
+    
+    # 해당 key 값을 date filter로 사용
+    now = key[0]
+
+    user = get_object_or_404(User, pk=user_pk)
+
+    attendance = DateCount.objects.filter(user=user).filter(date=now)
+
+    serializer = DailySerializer(attendance, many=True)
+    return Response(serializer.data)
