@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .serializers import PointSerializer, PointListSerializer
+from .serializers import PointSerializer, PointListSerializer, DailySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Point, User
+from .models import Point, User, DateCount
 
 @api_view(['POST'])
 def point_reward(request):
@@ -44,3 +44,12 @@ def point_list(request, user_pk):
         "point_list": serializer.data
     }
     return Response(data)
+
+@api_view(['GET'])
+def daily(request, user_pk):
+    user = get_object_or_404(User, pk=user_pk)
+
+    date = DateCount.objects.filter(user=user)
+
+    serializer = DailySerializer(date, many=True)
+    return Response(serializer.data)
