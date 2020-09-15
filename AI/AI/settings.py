@@ -39,18 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # CORS
+    'corsheaders',
 
+    # rest_framework
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
 
-
+    # rest_auth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
 
-
+    # my apps
     'accounts',
     'community',
     'english',
@@ -67,6 +70,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -152,3 +156,7 @@ ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGOUT_ON_GET = True
 REST_USE_JWT = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
