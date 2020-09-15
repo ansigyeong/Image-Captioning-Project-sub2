@@ -3,6 +3,8 @@ from .serializers import PointSerializer, PointListSerializer, DailySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Point, User, DateCount
+from datetime import datetime
+from django.utils import timezone
 
 @api_view(['POST'])
 def point_reward(request):
@@ -49,7 +51,9 @@ def point_list(request, user_pk):
 def daily(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
 
-    date = DateCount.objects.filter(user=user)
+    now = timezone.localtime(timezone.now()).date()
 
-    serializer = DailySerializer(date, many=True)
+    attendance = DateCount.objects.filter(user=user).filter(date=now)
+
+    serializer = DailySerializer(attendance, many=True)
     return Response(serializer.data)

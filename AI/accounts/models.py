@@ -13,7 +13,9 @@ class Point(models.Model):
 
 class DateCount(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
+    # datetimefield가 아니라 datefield를 사용
+    # '날짜'만 비교할 것이기 때문!!!
     image_speak_count = models.IntegerField(default='0')
     text_speak_count = models.IntegerField(default='0')
     listening_count = models.IntegerField(default='0')
