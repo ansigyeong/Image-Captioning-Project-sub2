@@ -1,28 +1,44 @@
 <template>
+  <!-- Login 1 -->
+  <!-- <div>
+    <h1>Login</h1>
+    <div>
+      <label for="username">username:</label>
+      <input v-model="loginData.username" id="username" type="text" />
+    </div>
+    <div>
+      <label for="password">password:</label>
+      <input v-model="loginData.password" id="password" type="password" />
+    </div>
+    <div>
+      <button @click="login(loginData)">Login</button>
+    </div>
+  </div> -->
+
+  <!-- Login 2 -->
   <body class="align">
 
     <div class="grid">
 
-      <form action="https://httpbin.org/post" method="POST" class="form login">
+      <form action="http://127.0.0.1:8000/" method="POST" class="form login">
 
         <div class="form__field">
-          <label for="login__username"><svg class="icon">
+          <label for="username"><svg class="icon">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
             </svg><span class="hidden">Username</span></label>
-          <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
+          <input v-model="loginData.username" id="username" type="text"  name="username" class="form__input" placeholder="Username" required>
         </div>
 
         <div class="form__field">
-          <label for="login__password"><svg class="icon">
+          <label for="password"><svg class="icon">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
             </svg><span class="hidden">Password</span></label>
-          <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+          <input v-model="loginData.password" id="password" type="password" name="password" class="form__input" placeholder="Password" required>
         </div>
 
         <div class="form__field">
-          <input type="submit" value="Sign In">
+          <input type="submit" @click="login(loginData)" value="Sign In">
         </div>
-
       </form>
 
       <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon">
@@ -46,9 +62,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'Signin'
-}
+  name: "LoginView",
+  data() {
+    return {
+      loginData: {
+        username: null,
+        password: null,
+      }
+    }
+  },
+  methods: {
+    ...mapActions(['login'])
+  }
+};
 </script>
 
 <style scoped>
@@ -126,9 +155,9 @@ export default {
   }
 
   body {
-    background-color: #2c3338;
-    background-image: url("../assets/Newyork.jpg");
-    background-size: 100%;
+    /* background-color: #2c3338; */
+    /* background-image: url('Newyork.jpg'); */
+    /* background-size: 100%; */
     color: #606468;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
@@ -259,5 +288,4 @@ export default {
   .text--center {
     text-align: center;
   }
-
 </style>
