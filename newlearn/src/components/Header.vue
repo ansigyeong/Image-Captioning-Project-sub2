@@ -72,7 +72,7 @@
                     <v-list-item-title>Speaking</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-list-item>
+            <v-list-item @click="goWordbook">
                 <v-list-item-icon>
                     <i class="fas fa-atlas"></i>
                 </v-list-item-icon>
@@ -109,6 +109,9 @@ export default {
         },
         goAttendance() {
             this.$router.push('/mypage/attendance')
+        },
+        goWordbook() {
+            this.$router.push('/english/wordbook')
         }
     }
 }

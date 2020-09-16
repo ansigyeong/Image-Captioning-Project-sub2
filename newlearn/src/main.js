@@ -5,6 +5,10 @@ import store from './store'
 import router from './router'
 import VueCookies from 'vue-cookies'
 
+import VueMoment from 'vue-moment'
+
+Vue.use(VueMoment);
+
 Vue.use(VueCookies)
 Vue.config.productionTip = false
 
