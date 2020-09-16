@@ -3,8 +3,6 @@ from .serializers import PointSerializer, PointListSerializer, DailySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Point, User, DateCount
-from datetime import datetime
-from django.utils import timezone
 
 @api_view(['POST'])
 def point_reward(request):
