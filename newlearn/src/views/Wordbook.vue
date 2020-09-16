@@ -11,6 +11,7 @@
             수능 단어 가져오기
         </v-btn>
         <div v-if="words">
+            {{ $moment(today).format('YY년 MM월 DD일') }}의 단어
             <li v-for="(word) in words" :key="word.pid">
                 {{ word.word }} : {{ word.mean }}
             </li>
@@ -26,16 +27,23 @@ const BACK_URL = 'http://127.0.0.1:8000'
 export default {
     data () {
       return {
-        words: null,
+        words: JSON.parse(localStorage.getItem("words")),
+        today: localStorage.getItem("today"),
         choice: '',
       }
     },
+    created() {
+        // console.log(localStorage.words)
+    }
+    ,
     methods: {
         callVocabulary(choice) {
             axios.post(`${BACK_URL}/english/vocabulary/`, choice)
             .then(res => {
                 this.words = res.data.vocabulary
-                console.log(this.words)
+                localStorage.setItem("words", JSON.stringify(this.words))
+                this.today = res.data.today
+                localStorage.today = this.today
             })
         },
         callToeicVocabulary() {
