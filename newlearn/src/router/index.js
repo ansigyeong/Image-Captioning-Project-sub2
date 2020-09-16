@@ -11,6 +11,8 @@ import PointList from '../views/PointList.vue'
 import Attendance from '../views/Attendance.vue'
 import QandA from '../views/QandA.vue'
 
+import Wordbook from '../views/Wordbook.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,7 +55,12 @@ const routes = [
     path: '/mypage/qanda',
     name: 'QandA',
     component: QandA,
-  }
+  },
+  {
+    path: '/english/wordbook',
+    name: 'Wordbook',
+    component: Wordbook,
+  },
 ]
 
 const router = new VueRouter({
@@ -63,7 +70,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['Login', 'Signup', 'Home', 'List', 'Pointlist', 'Attendance']  // Login 안해도 됨
+  const publicPages = ['Login', 'Signup', 'Home', 'List', 'Pointlist', 'Attendance', 'Wordbook']  // Login 안해도 됨
   const authPages = ['Login', 'Signup']  // Login 되어있으면 안됨
   
   const authRequired = !publicPages.includes(to.name)  // 로그인 해야 함
