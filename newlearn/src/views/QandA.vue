@@ -39,6 +39,8 @@
 </template>
 
 <script>
+  // const BACK_URL = 'http://127.0.0.1:8000'
+
   export default {
     name: 'QandA',
     data () {
@@ -48,6 +50,11 @@
         title: '',
       }
     },
+    // methods: {
+    //   originInfo() {
+    //     axios.post(`${BACK_URL}`/)
+    //   }
+    // }
   }
 </script>
 
