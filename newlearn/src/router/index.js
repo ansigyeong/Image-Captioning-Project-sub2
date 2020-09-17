@@ -5,9 +5,11 @@ import Home from '../views/Home.vue'
 import SignupView from '../views/accounts/SignupView.vue'
 import LoginView from '../views/accounts/LoginView.vue'
 import LogoutView from '../views/accounts/LogoutView.vue'
+import Myinfo from '../views/accounts/Myinfo.vue'
 
 import PointList from '../views/PointList.vue'
 import Attendance from '../views/Attendance.vue'
+import QandA from '../views/QandA.vue'
 
 import Wordbook from '../views/Wordbook.vue'
 
@@ -35,6 +37,11 @@ const routes = [
     component: LogoutView,
   },
   {
+    path: '/mypage/myinfo',
+    name: 'Myinfo',
+    component: Myinfo,
+  },
+  {
     path: '/mypage/pointList',
     name: 'Pointlist',
     component: PointList,
@@ -45,10 +52,15 @@ const routes = [
     component: Attendance,
   },
   {
+    path: '/mypage/qanda',
+    name: 'QandA',
+    component: QandA,
+  },
+  {
     path: '/english/wordbook',
     name: 'Wordbook',
     component: Wordbook,
-  }
+  },
 ]
 
 const router = new VueRouter({

@@ -26,7 +26,7 @@
                                     <v-list-item-title>출석부</v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
-                            <v-list-item style="margin-left:20px;">
+                            <v-list-item @click="goMyinfo" style="margin-left:20px;">
                                 <v-list-item-content>
                                     <v-list-item-title>내 정보 수정</v-list-item-title>
                                 </v-list-item-content>
@@ -36,7 +36,7 @@
                                     <v-list-item-title>포인트 조회</v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
-                            <v-list-item style="margin-left:20px;">
+                            <v-list-item @click="goQandA" style="margin-left:20px;">
                                 <v-list-item-content>
                                     <v-list-item-title>건의 & 불편 신고</v-list-item-title>
                                 </v-list-item-content>
@@ -110,13 +110,19 @@ export default {
         goAttendance() {
             this.$router.push('/mypage/attendance')
         },
+        goMyinfo() {
+            this.$router.push('/mypage/myinfo')
+        },
+        goQandA() {
+            this.$router.push('/mypage/QandA')
+        },
         goWordbook() {
             this.$router.push('/english/wordbook')
-        }
+        },
     }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
