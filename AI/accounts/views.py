@@ -3,6 +3,7 @@ from .serializers import PointSerializer, PointListSerializer, DailySerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Point, User, DateCount
+from django.forms.models import model_to_dict
 
 @api_view(['POST'])
 def point_reward(request):
@@ -57,11 +58,32 @@ def daily(request, user_pk):
     key = list(myDict.keys())
     
     # 해당 key 값을 date filter로 사용
-    now = key[0]
+    time = key[0]
 
     user = get_object_or_404(User, pk=user_pk)
 
-    attendance = DateCount.objects.filter(user=user).filter(date=now)
+    day = DateCount.objects.filter(user=user).filter(date=time)
 
-    serializer = DailySerializer(attendance, many=True)
-    return Response(serializer.data)
+    day_serializer = DailySerializer(day, many=True)
+
+    # 받아온 date 값에서 year과 month를 추출
+    year = time[0:4]
+    month = time[5:7]
+
+    # 해당하는 연도의 해당하는 달에 해당하는 값들을 filter로 검색
+    month_list = DateCount.objects.filter(user=user).filter(date__year__gte=year, date__month__gte=month, date__year__lte=year, date__month__lte=month).values('date')
+
+    month_day_list = []
+    # month_list 쿼리셋에서 개별 dict를 추출
+    for month_value in month_list:
+        # dict에서 필요한 value 값만 추출
+        for key, value in month_value.items():
+            # 해당 값을 list에 저장
+            month_day_list.append(value.day)
+
+    data = {
+        'day': day_serializer.data,
+        'month': month_day_list
+    }
+
+    return Response(data)
