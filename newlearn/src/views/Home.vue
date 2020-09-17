@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Header></Header>
     <LoginView v-if="!isLoggedIn" />
   </div>
 </template>
@@ -8,7 +7,6 @@
 <script>
 // @ is an alias to /src
 
-import Header from '../components/Header.vue'
 import LoginView from '../views/accounts/LoginView.vue'
 import { mapGetters } from 'vuex'
 
@@ -18,7 +16,6 @@ export default {
     ...mapGetters(['isLoggedIn'])
   },
   components: {
-    Header,
     LoginView,
   }
 }

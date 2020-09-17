@@ -1,18 +1,24 @@
 <template>
     <div>
-        <h1>워드북</h1>
-        <v-btn @click="callToeicVocabulary">
-            토익 단어 가져오기
-        </v-btn>
-        <v-btn @click="callOpicVocabulary">
-            오픽 단어 가져오기
-        </v-btn>
-        <v-btn @click="callSATVocabulary">
-            수능 단어 가져오기
-        </v-btn>
+        <h1 style="text-align:center;">단어장</h1>
+        <div style="text-align:center;">
+            <v-btn @click="callToeicVocabulary" style="margin:1%;">
+                토익 단어 가져오기
+            </v-btn>
+            <v-btn @click="callOpicVocabulary" style="margin:1%;">
+                오픽 단어 가져오기
+            </v-btn>
+            <v-btn @click="callSATVocabulary" style="margin:1%;">
+                수능 단어 가져오기
+            </v-btn>
+        </div>
+        <br>
         <div v-if="words">
-            {{ $moment(today).format('YY년 MM월 DD일') }}의 단어
-            <li v-for="(word) in words" :key="word.pid">
+            <h3 style="text-align:center;">
+                {{ $moment(today).format('YY년 MM월 DD일') }}의 단어
+            </h3>
+            <br>
+            <li v-for="(word) in words" :key="word.pid" style="margin-left:20%;">
                 {{ word.word }} : {{ word.mean }}
             </li>
         </div>
