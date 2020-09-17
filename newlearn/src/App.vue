@@ -2,6 +2,7 @@
   <v-app id="app">
     <Header/>
     <main>
+      <router-view />
     </main>
   </v-app>
 </template>
