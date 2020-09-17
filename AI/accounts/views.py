@@ -21,7 +21,7 @@ def point_reward(request):
 def point_list(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
 
-    points = Point.objects.filter(user=user)
+    points = Point.objects.filter(user=user).order_by('-pk')
     
     # 해당 유저의 전체 포인트를 리스트로 정리
     user_point_list = []
