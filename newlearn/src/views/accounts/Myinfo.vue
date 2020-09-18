@@ -1,7 +1,6 @@
 <template>
   <v-app>
 
-    <Header />
     <div class="container">
       <!-- 1. 프로필 카드 -->
       <v-card
@@ -11,7 +10,7 @@
       >
         <v-img
           height="100%"
-          src="https://cdn.vuetifyjs.com/images/cards/server-room.jpg"
+          src="@/assets/profile_back_sample.jpg"
         >
           <v-row
             align="end"
@@ -28,7 +27,7 @@
                 size="164"
                 tile
               >
-                <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                <v-img src="@/assets/profile_sample.jpg"></v-img>
               </v-avatar>
             </v-col>
             <v-col class="py-0">
@@ -37,8 +36,8 @@
                 dark
               >
                 <v-list-item-content>
-                  <v-list-item-title class="title">Marcus Obrien</v-list-item-title>
-                  <v-list-item-subtitle>Network Engineer</v-list-item-subtitle>
+                  <v-list-item-title class="title"><h1>Ko younghee</h1></v-list-item-title>
+                  <v-list-item-subtitle><h2>Network Engineer</h2></v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
@@ -55,7 +54,7 @@
           v-model="name"
           :error-messages="nameErrors"
           :counter="10"
-          label="Name"
+          label="Goyounghee@gmail.com"
           required
           @input="$v.name.$touch()"
           @blur="$v.name.$touch()"
@@ -63,15 +62,15 @@
         <div>
           <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
             <!-- <label class="form__label">Password</label> -->
-            <v-text-field label="Password" class="form__input" v-model.trim="$v.password.$model"/>
+            <v-text-field label="●●●●●●●●" class="form__input" v-model.trim="$v.password.$model"/>
           </div>
-          <div class="error" v-if="!$v.password.required" style="font-style: italic; color: red;"><small>Password is required.</small></div>
-          <div class="error" v-if="!$v.password.minLength" style="font-style: italic; color: red;"><small>Password must have at least {{ $v.password.$params.minLength.min }} letters.</small></div>
+          <!-- <div class="error" v-if="!$v.password.required" style="font-style: italic; color: red;"><small>Password is required.</small></div>
+          <div class="error" v-if="!$v.password.minLength" style="font-style: italic; color: red;"><small>Password must have at least {{ $v.password.$params.minLength.min }} letters.</small></div> -->
           <div class="form-group" :class="{ 'form-group--error': $v.repeatPassword.$error }">
             <!-- <label class="form__label">Repeat password</label> -->
-            <v-text-field label="Repeat Password" class="form__input" v-model.trim="$v.repeatPassword.$model"/>
+            <v-text-field label="●●●●●●●●" class="form__input" v-model.trim="$v.repeatPassword.$model"/>
           </div>
-          <div class="error" v-if="!$v.repeatPassword.sameAsPassword" style="font-style: italic; color: red;"><small>Passwords must be identical.</small></div>
+          <!-- <div class="error" v-if="!$v.repeatPassword.sameAsPassword" style="font-style: italic; color: red;"><small>Passwords must be identical.</small></div> -->
           <tree-view :data="$v" :options="{rootObjectKey: '$v', maxDepth: 2}"></tree-view>
         </div>
         <br>
@@ -86,14 +85,12 @@
 </template>
 
 <script>
-  import Header from '../../components/Header.vue'
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, sameAs, minLength } from 'vuelidate/lib/validators'
 
   export default {
     name: 'Myinfo',
     components: {
-      Header,
     },
     mixins: [validationMixin],
     validations: {
